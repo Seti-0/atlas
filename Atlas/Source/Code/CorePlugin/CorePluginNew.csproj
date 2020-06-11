@@ -47,8 +47,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Network\Data\IPAddress.cs" />
+    <Compile Include="Network\Data\IPEndPoint.cs" />
+    <Compile Include="Network\Data\NetDeliveryMethod.cs" />
+    <Compile Include="Network\Data\PeerInfo.cs" />
+    <Compile Include="Network\Events\ClientJoinedEventArgs.cs" />
+    <Compile Include="Network\Events\ConnectedEventArgs.cs" />
+    <Compile Include="Network\Events\DataRecievedEventArgs.cs" />
+    <Compile Include="Network\Events\DisconnectEventArgs.cs" />
+    <Compile Include="Network\Events\NetEventAgs.cs" />
+    <Compile Include="Network\Events\ServerJoinedEventArgs.cs" />
+    <Compile Include="Network\IClient.cs" />
+    <Compile Include="Network\INetworkPeer.cs" />
+    <Compile Include="Network\IServer.cs" />
     <Compile Include="CorePlugin.cs" />
-    <Compile Include="YourCustomComponentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

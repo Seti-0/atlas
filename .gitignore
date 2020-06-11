@@ -43,3 +43,15 @@ Backup/
 !SoulstoneUtility.core.pdb
 !SoulstoneSerialization.editor.dll
 !SoulstoneSerialization.editor.pdb
+
+# Project specific
+!AtlasLidgren.core.dll
+!AtlasLidgren.core.pdb
+!Lidgren.Network.dll
+!Lidgren.Network.core.pdb
+
+# Testing
+!Blue.core.dll
+!Blue.core.pdb
+!BlueInput.core.dll
+!BlueInput.core.pdb
