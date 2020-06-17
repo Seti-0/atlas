@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 
 using Duality;
+using Duality.Resources;
 
-namespace Duality_
+namespace Soulstone.Duality.Plugins.Atlas
 {
-	/// <summary>
-	/// Defines a Duality core plugin.
-	/// </summary>
-	public class Duality_CorePlugin : CorePlugin
+	public class AtlasPlugin : CorePlugin
 	{
-		// Override methods here for global logic
+        public void Test()
+        {
+
+        }
 	}
 }
