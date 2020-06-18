@@ -24,7 +24,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
     {
         public float StuckTime { get; set; }
 
-        public TurnDirection SteerBias = TurnDirection.Left;
+        public TurnDirection SteerBias { get; set; } = TurnDirection.Left;
 
         public SteeringNoise Noise { get; set; } = new SteeringNoise();
 
