@@ -10,9 +10,19 @@ namespace Soulstone.Duality.Plugins.Atlas
 {
 	public class AtlasPlugin : CorePlugin
 	{
-        public void Test()
+        protected override void InitPlugin()
         {
-
+            AtlasApp.Init();
         }
-	}
+
+        protected override void OnBeforeUpdate()
+        {
+            AtlasApp.Update();
+        }
+
+        protected override void OnDisposePlugin()
+        {
+            AtlasApp.Shutdown();
+        }
+    }
 }
