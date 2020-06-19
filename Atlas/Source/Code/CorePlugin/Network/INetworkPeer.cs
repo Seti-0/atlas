@@ -11,6 +11,8 @@ namespace Soulstone.Duality.Plugins.Atlas.Network
         event EventHandler<DisconnectEventArgs> Disconnect;
         event EventHandler<DataRecievedEventArgs> DataRecieved;
 
+        DebugOptions DebugOptions { get; set; }
+
         PeerInfo Info { get; }
 
         Guid ID { get; }

@@ -47,8 +47,8 @@ Backup/
 # Project specific
 !AtlasLidgren.core.dll
 !AtlasLidgren.core.pdb
-!Lidgren.Network.dll
-!Lidgren.Network.core.pdb
+!Lidgren.Network.MultiTarget.dll
+!Lidgren.Network.MultiTarget.pdb
 
 # Testing
 !Blue.core.dll

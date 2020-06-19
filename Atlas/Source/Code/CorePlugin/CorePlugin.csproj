@@ -57,6 +57,7 @@
     <Compile Include="Components\HostComponent.cs" />
     <Compile Include="Interface\ICmpClientComponent.cs" />
     <Compile Include="Interface\ICmpHostComponent.cs" />
+    <Compile Include="Network\Data\DebugOptions.cs" />
     <Compile Include="Network\Data\IPAddress.cs" />
     <Compile Include="Network\Data\IPEndPoint.cs" />
     <Compile Include="Network\Data\NetDeliveryMethod.cs" />
