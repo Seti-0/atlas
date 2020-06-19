@@ -15,30 +15,6 @@ namespace Soulstone.Duality.Plugins.Atlas
 {
     public static class AtlasApp
     {
-        [EditorHintImage("Soulstone.Duality.Plugins.Atlas.EmbeddedResources.signal.png")]
-        private class NetworkLogInfo : CustomLogInfo
-        {
-            public NetworkLogInfo() : base("Atlas.Network", "Soulstone.Duality.Plugins.Atlas.Network") { }
-        }
-
-        [EditorHintImage("Soulstone.Duality.Plugins.Atlas.EmbeddedResources.flask.png")]
-        private class TestLogInfo : CustomLogInfo
-        {
-            public TestLogInfo() : base("Atlas.Testing", "Soulstone.Duality.Plugins.Atlas.Testing") { }
-        }
-
-        [EditorHintImage("Soulstone.Duality.Plugins.Atlas.EmbeddedResources.refresh.png")]
-        private class SyncLogInfo : CustomLogInfo
-        {
-            public SyncLogInfo() : base("Atlas.Sync", "Soulstone.Duality.Plugins.Atlas.Sync") { }
-        }
-
-        public static Log NetworkLog = Logs.Get<NetworkLogInfo>();
-
-        internal static Log TestLog = Logs.Get<TestLogInfo>();
-
-        public static Log SyncLog = Logs.Get<SyncLogInfo>();
-
         public static IServer Server { get; private set; }
 
         public static IClient Client { get; private set; }

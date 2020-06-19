@@ -75,7 +75,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
             }
             else
             {
-                AtlasApp.SyncLog.WriteWarning($"Could not find client component for " +
+                AtlasLogs.Sync.WriteWarning($"Could not find client component for " +
                     $"deactivation: {type.Name}, {path}");
             }
         }
@@ -96,7 +96,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
             }
             else
             {
-                AtlasApp.SyncLog.WriteWarning($"Could not find client component for " +
+                AtlasLogs.Sync.WriteWarning($"Could not find client component for " +
                     $"deactivation: {type.Name}, {path}");
             }
         }
@@ -109,8 +109,8 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
             }
             else
             {
-                AtlasApp.SyncLog.WriteWarning($"Could not find object for change of name: {path}");
-                AtlasApp.SyncLog.Write($"Desired new name: {newName}");
+                AtlasLogs.Sync.WriteWarning($"Could not find object for change of name: {path}");
+                AtlasLogs.Sync.Write($"Desired new name: {newName}");
             }
         }
 
@@ -118,7 +118,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
         {
             if (!TryFindGameObject(objPath, out var target))
             {
-                AtlasApp.SyncLog.WriteWarning($"Could not find object for change of parent: {objPath}");
+                AtlasLogs.Sync.WriteWarning($"Could not find object for change of parent: {objPath}");
                 return;
             }
 
@@ -130,8 +130,8 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
 
                 if (newParent == target || newParent.IsChildOf(target))
                 {
-                    AtlasApp.SyncLog.WriteWarning($"Attempted to create circular parent relationship");
-                    AtlasApp.SyncLog.Write($"Target: {target.FullName}, New Parent: {newParent.FullName}");
+                    AtlasLogs.Sync.WriteWarning($"Attempted to create circular parent relationship");
+                    AtlasLogs.Sync.Write($"Target: {target.FullName}, New Parent: {newParent.FullName}");
                     return;
                 }
             }
@@ -150,7 +150,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
             }
             else
             {
-                AtlasApp.SyncLog.WriteWarning($"Could not find object to delete: {path}");
+                AtlasLogs.Sync.WriteWarning($"Could not find object to delete: {path}");
             }
         }
 

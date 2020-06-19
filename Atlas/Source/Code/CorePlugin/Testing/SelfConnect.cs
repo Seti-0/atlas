@@ -55,7 +55,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
 
             if (AtlasApp.Server == null || AtlasApp.Client == null)
             {
-                AtlasApp.TestLog.WriteWarning("Atlas app not initialized");
+                AtlasLogs.Tests.WriteWarning("Atlas app not initialized");
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
                 }
                 else
                 {
-                    AtlasApp.TestLog.WriteWarning($"Failed to parse ip: {IP}");
+                    AtlasLogs.Tests.WriteWarning($"Failed to parse ip: {IP}");
                 }
             }
 
@@ -99,7 +99,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
 
         private void Client_Joined(object sender, ServerJoinedEventArgs e)
         {
-            AtlasApp.TestLog.Write($"Joined {e.Server.Name} ({e.Server.EndPoint})!");
+            AtlasLogs.Tests.Write($"Joined {e.Server.Name} ({e.Server.EndPoint})!");
         }
 
         public void OnDeactivate()
@@ -117,12 +117,12 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
 
         public void OnRemoteDeactivate()
         {
-             AtlasApp.TestLog.Write("Remote deactivation");
+             AtlasLogs.Tests.Write("Remote deactivation");
         }
 
         public void Update(object newValue)
         {
-            AtlasApp.TestLog.Write($"Recieved value: {newValue}");
+            AtlasLogs.Tests.Write($"Recieved value: {newValue}");
         }
 
         public Type GetClientComponentType()

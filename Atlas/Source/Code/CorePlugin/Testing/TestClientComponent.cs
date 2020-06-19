@@ -21,25 +21,25 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
         public void OnRemoteActivate()
         {
             RemoteActive = true;
-            AtlasApp.TestLog.Write($"Remote activate at {GameObj?.FullName}");
+            AtlasLogs.Tests.Write($"Remote activate at {GameObj?.FullName}");
         }
 
         public void OnRemoteDeactivate()
         {
             RemoteActive = false;
-            AtlasApp.TestLog.Write($"Remote deactivate at {GameObj?.FullName}");
+            AtlasLogs.Tests.Write($"Remote deactivate at {GameObj?.FullName}");
             Dispose();
         }
 
         public void Update(object newValue)
         {
-            AtlasApp.TestLog.Write($"Update at {GameObj?.FullName}");
-            AtlasApp.TestLog.Write($"Value: {newValue}");
+            AtlasLogs.Tests.Write($"Update at {GameObj?.FullName}");
+            AtlasLogs.Tests.Write($"Value: {newValue}");
 
             if (newValue is Vector3 newVector)
                 Value = newVector;
 
-            else AtlasApp.TestLog.WriteWarning($"Unrecognised object at {GameObj?.FullName}");
+            else AtlasLogs.Tests.WriteWarning($"Unrecognised object at {GameObj?.FullName}");
         }
     }
 }

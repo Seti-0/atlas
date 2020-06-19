@@ -54,7 +54,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
 
         private void Report(string item)
         {
-            AtlasApp.TestLog.Write(item);
+            AtlasLogs.Tests.Write(item);
         }
     }
 }

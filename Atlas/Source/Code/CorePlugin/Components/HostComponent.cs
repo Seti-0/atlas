@@ -21,7 +21,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Components
             }
             else
             {
-                AtlasApp.SyncLog.WriteError($"Unable to send deactivation from {GameObj.FullName}:" +
+                AtlasLogs.Sync.WriteError($"Unable to send deactivation from {GameObj.FullName}:" +
                     $" component is disconnected from scene");
             }
         }
@@ -34,7 +34,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Components
             }
             else
             {
-                AtlasApp.SyncLog.WriteError($"Unable to send deactivation from {GameObj.FullName}:" +
+                AtlasLogs.Sync.WriteError($"Unable to send deactivation from {GameObj.FullName}:" +
                     $" component is disconnected from scene");
             }
         }
@@ -48,7 +48,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Components
             }
             else
             {
-                AtlasApp.SyncLog.WriteError($"Unable to send update from {GameObj.FullName}:" +
+                AtlasLogs.Sync.WriteError($"Unable to send update from {GameObj.FullName}:" +
                     $" component is disconnected from scene");
             }
         }

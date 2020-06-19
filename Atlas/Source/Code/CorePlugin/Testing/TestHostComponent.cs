@@ -35,19 +35,19 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing
 
         public override void OnActivate()
         {
-            AtlasApp.TestLog.Write($"Sending activation from {GameObj.FullName}");
+            AtlasLogs.Tests.Write($"Sending activation from {GameObj.FullName}");
             base.OnActivate();
         }
 
         public override void OnDeactivate()
         {
-            AtlasApp.TestLog.Write($"Sending deactivation from {GameObj.FullName}");
+            AtlasLogs.Tests.Write($"Sending deactivation from {GameObj.FullName}");
             base.OnDeactivate();
         }
 
         protected override void OnSendUpdate()
         {
-            AtlasApp.TestLog.Write($"Sending value from {GameObj.FullName}");
+            AtlasLogs.Tests.Write($"Sending value from {GameObj.FullName}");
             base.OnSendUpdate();
         }
 

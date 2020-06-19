@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AtlasApp.cs" />
+    <Compile Include="AtlasLogs.cs" />
     <Compile Include="CategoryNames.cs" />
     <Compile Include="Components\ClientComponent.cs" />
     <Compile Include="Components\HostComponent.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Sync\SyncMessageHelper.cs" />
     <Compile Include="Testing\FlowTest.cs" />
     <Compile Include="Testing\SimpleConnect.cs" />
-    <None Include="Testing\SelfConnect.cs" />
+    <Compile Include="Testing\SelfConnect.cs" />
     <Compile Include="Testing\TestClientComponent.cs" />
     <Compile Include="Testing\TestHostComponent.cs" />
     <Compile Include="Sync\SceneHelper.cs" />

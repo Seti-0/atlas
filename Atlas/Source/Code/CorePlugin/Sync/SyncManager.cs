@@ -206,7 +206,7 @@ namespace Soulstone.Duality.Plugins.Atlas
         {
             if (result == null)
             {
-                AtlasApp.NetworkLog.WriteWarning($"Message of type {source.MessageType} was" +
+                AtlasLogs.Network.WriteWarning($"Message of type {source.MessageType} was" +
                     $" of unexpected Type {source.GetType().Name}");
             }
 
@@ -217,7 +217,7 @@ namespace Soulstone.Duality.Plugins.Atlas
         {
             if (message.MessageType == MessageType.SyncRequest)
             {
-                AtlasApp.SyncLog.Write($"Sync request from {sender} acknowledged");
+                AtlasLogs.Sync.Write($"Sync request from {sender} acknowledged");
                 PushAll(sender);
             }
 
