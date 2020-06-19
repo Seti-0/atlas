@@ -58,12 +58,12 @@ namespace Soulstone.Duality.Plugins.Atlas
 
         private static void Client_DataRecieved(object sender, DataRecievedEventArgs e)
         {
-            //SyncManager.TryParseData(e.Data, e.Sender);
+            SyncManager.TryParseData(e.Data, e.Sender);
         }
 
         private static void Server_DataRecieved(object sender, DataRecievedEventArgs e)
         {
-            //SyncManager.TryParseData(e.Data, e.Sender);
+            SyncManager.TryParseData(e.Data, e.Sender);
         }
 
         public static void Update()
