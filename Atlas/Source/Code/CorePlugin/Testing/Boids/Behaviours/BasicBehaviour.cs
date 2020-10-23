@@ -16,7 +16,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids.Behaviours
         {
             float hue = (float) random.NextDouble();
             Agent.NaturalColor = AgentManager.GlobalParameters.General.BaseColor.WithHue(hue);
-            ApplyColor(Agent.NaturalColor);
+            Agent.ApplyColor(Agent.NaturalColor);
         }
 
         protected override void OnApply()
@@ -37,15 +37,11 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids.Behaviours
 
         private void ApplyVel()
         {
-            var transform = Agent.GameObj.Transform;
+            var pos = Agent.GetPosition();
+            var angle = Agent.GetAngle();
 
-            var localPos = transform.LocalPos;
-            localPos += transform.LocalForward * General.Speed * DeltaTime;
-
-            var globalPos = localPos;
-
-            if (Agent.GameObj.Parent?.Transform != null)
-                globalPos = Agent.GameObj.Parent.Transform.GetWorldPoint(localPos);
+            var forward = new Vector2(MathF.Sin(angle), -MathF.Cos(angle));
+            pos += forward * General.Speed * DeltaTime;
 
             if (General.EdgeBehaviour == EdgeBehaviour.Wrap)
             {
@@ -55,14 +51,14 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids.Behaviours
                 var bottom = -border + General.Region.TopY;
                 var top = border + General.Region.BottomY;
 
-                if (globalPos.X < left) globalPos.X = right + (globalPos.X - left);
-                else if (globalPos.X > right) globalPos.X = left + (globalPos.X - right);
+                if (pos.X < left) pos.X = right + (pos.X - left);
+                else if (pos.X > right) pos.X = left + (pos.X - right);
 
-                if (globalPos.Y < bottom) globalPos.Y = top + (globalPos.Y - bottom);
-                else if (globalPos.Y > top) globalPos.Y = bottom + (globalPos.Y - top);
+                if (pos.Y < bottom) pos.Y = top + (pos.Y - bottom);
+                else if (pos.Y > top) pos.Y = bottom + (pos.Y - top);
             }
 
-            transform.Pos = globalPos;
+            Agent.ApplyPosition(pos);
         }
     }
 }

@@ -23,10 +23,8 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
         {
             if (Avoidance.Apply)
             {
-                var transform = Agent.GameObj.Transform;
-
-                var currentShape = Agent.Scene.Physics.PickShape(
-                    transform.GetWorldPoint(Vector2.Zero));
+                var currentShape = Scene.Current.Physics.PickShape(
+                    Agent.GetWorldPoint(Vector2.Zero));
 
                 var left = CastRay(-Avoidance.VisionAngle);
                 var right = CastRay(Avoidance.VisionAngle);
@@ -65,21 +63,21 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
                 if (Agent.StuckTime < 1)
                 {
-                    transform.Angle += DeltaTime * Avoidance.Strength * targetDirection;
+                    var angle = Agent.GetAngle();
+                    angle += DeltaTime * Avoidance.Strength * targetDirection;
+                    Agent.ApplyAngle(angle);
                 }
             }
         }
 
         private bool CastRay(float localAngle)
         {
-            var transform = Agent.GameObj.Transform;
-
             var localVector = Vector2.FromAngleLength(localAngle, Avoidance.VisionRadius);
-            var globalVector = transform.GetWorldVector(localVector);
+            var globalVector = Agent.GetWorldVector(localVector);
 
-            var origin = transform.GetWorldPoint(Vector2.Zero);
+            var origin = Agent.GetWorldPoint(Vector2.Zero);
 
-            bool hit = Agent.Scene.Physics.RayCast(origin, origin + globalVector, d => 0, out var data);
+            bool hit = Scene.Current.Physics.RayCast(origin, origin + globalVector, d => 0, out var data);
 
             return hit;
         }
@@ -88,14 +86,12 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
         {
             if ((Agent.LocalVisualDebug || General.VisualDebug) && Avoidance.ShowVision)
             {
-                var transform = Agent.GameObj.Transform;
-
-                var globalVector = transform.GetWorldVector(
+                var globalVector = Agent.GetWorldVector(
                     Vector2.FromAngleLength(angle, Avoidance.VisionRadius));
 
-                var origin = transform.GetWorldPoint(Vector2.Zero);
+                var origin = Agent.GetWorldPoint(Vector2.Zero);
 
-                var camera = Agent.Scene.FindComponent<Camera>();
+                var camera = Scene.Current.FindComponent<Camera>();
 
                 var screenOrigin = camera.GetScreenPos(origin);
                 var screenEnd = camera.GetScreenPos(origin + globalVector);

@@ -74,6 +74,10 @@
     <Compile Include="CorePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sync\SyncMessageHelper.cs" />
+    <Compile Include="Testing\Boids\IAgent.cs" />
+    <Compile Include="Testing\Boids\Network\AgentState.cs" />
+    <Compile Include="Testing\Boids\Network\ClientAgent.cs" />
+    <Compile Include="Testing\Boids\Network\HostAgent.cs" />
     <Compile Include="Testing\FlowTest.cs" />
     <Compile Include="Testing\SimpleConnect.cs" />
     <Compile Include="Testing\SelfConnect.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Sync\Serialization.cs" />
     <Compile Include="Sync\SyncManager.cs" />
     <Compile Include="Testing\Boids\Agent.cs" />
+    <Compile Include="Utility\ComponentHelper.cs" />
     <None Include="Testing\Boids\Old\Boid.cs" />
     <None Include="Testing\Boids\Old\BoidGroup.cs" />
     <Compile Include="Testing\Boids\Behaviours\AgentBehaviour.cs" />

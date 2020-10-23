@@ -27,7 +27,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
                 float visionRadius = Color.VisionRadius;
                 float visionAngle = Color.VisionAngle;
 
-                var neighbours = Agent.GetNeighbours(visionRadius, visionAngle);
+                var neighbours = GetAgentNeighbours(visionRadius, visionAngle);
 
                 /*float targetHue = hue;
 
@@ -116,7 +116,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
         private void DrawColorVector(Vector2 vector)
         {
-            var camera = Agent.Scene.FindComponent<Camera>();
+            var camera = Scene.Current.FindComponent<Camera>();
 
             var screenOrigin = camera.GetScreenPos(Vector2.Zero);
             var screenEnd = camera.GetScreenPos(100 * vector);
@@ -130,11 +130,10 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
         private void DrawLink(Agent target, ColorRgba color)
         {
-            var camera = Agent.Scene.FindComponent<Camera>();
-            var transform = Agent.GameObj.Transform;
+            var camera = Scene.Current.FindComponent<Camera>();
 
             var screenOrigin = camera.GetScreenPos(
-                transform.GetWorldPoint(Vector2.Zero));
+                Agent.GetWorldPoint(Vector2.Zero));
 
             var screenEnd = camera.GetScreenPos(target.GameObj.Transform.Pos.Xy);
 

@@ -10,21 +10,21 @@ using Soulstone.Duality.Plugins.Atlas.Interface;
 
 namespace Soulstone.Duality.Plugins.Atlas.Components
 {
-    public class ClientComponent : Component
+    public abstract class ClientComponent<T> : Component, ICmpClientComponent
     {    
-        public void OnRemoteActivate()
-        {
+        public virtual void OnRemoteActivate(){}
 
+        public virtual void OnRemoteDeactivate()
+        {
+            Dispose();
         }
 
-        public void OnRemoteDeactivate()
+        void ICmpClientComponent.Update(object newValue)
         {
-
+            if (newValue is T t)
+                OnUpdate(t);
         }
 
-        public void Update(object newValue)
-        {
-            
-        }
+        public abstract void OnUpdate(T newValue);
     }
 }

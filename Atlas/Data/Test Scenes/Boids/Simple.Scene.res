@@ -1164,8 +1164,8 @@
             <ignoreParent dataType="Bool">false</ignoreParent>
             <pos dataType="Struct" type="Duality.Vector3" />
             <posAbs dataType="Struct" type="Duality.Vector3" />
-            <scale dataType="Float">0.2</scale>
-            <scaleAbs dataType="Float">0.2</scaleAbs>
+            <scale dataType="Float">1</scale>
+            <scaleAbs dataType="Float">1</scaleAbs>
           </item>
           <item dataType="Struct" type="Soulstone.Duality.Plugins.Atlas.Testing.Boids.AgentManager" id="2439978762">
             <_parameters dataType="Struct" type="Duality.ContentRef`1[[Soulstone.Duality.Plugins.Atlas.Testing.Boids.Parameters]]">

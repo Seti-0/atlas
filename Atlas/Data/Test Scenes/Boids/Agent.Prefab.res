@@ -17,8 +17,8 @@
           <ignoreParent dataType="Bool">false</ignoreParent>
           <pos dataType="Struct" type="Duality.Vector3" />
           <posAbs dataType="Struct" type="Duality.Vector3" />
-          <scale dataType="Float">1</scale>
-          <scaleAbs dataType="Float">1</scaleAbs>
+          <scale dataType="Float">0.2</scale>
+          <scaleAbs dataType="Float">0.2</scaleAbs>
         </item>
         <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="848218978">
           <active dataType="Bool">true</active>
@@ -56,16 +56,13 @@
           </_x003C_NaturalColor_x003E_k__BackingField>
           <_x003C_Noise_x003E_k__BackingField dataType="Struct" type="Soulstone.Duality.Plugins.Atlas.Testing.Boids.SteeringNoise" id="1858532861">
             <_duration dataType="Float">0</_duration>
-            <_lastTime dataType="Double">0</_lastTime>
-            <_random dataType="Struct" type="System.Random" id="2703986982">
-              <inext dataType="Int">0</inext>
-              <inextp dataType="Int">21</inextp>
-              <SeedArray dataType="Array" type="System.Int32[]" id="2110784768">0, 1822436872, 139370181, 839340831, 284108394, 277317027, 206692957, 940961029, 1567434841, 1289990681, 947783731, 553036660, 994323793, 1748688894, 2037221818, 393214691, 775978636, 555559351, 519586390, 483849482, 842570974, 1317683824, 660022594, 2101430990, 895974448, 69974278, 1347326468, 585964278, 285078665, 506960879, 133617778, 983109033, 2115064372, 1014382912, 17711383, 126272498, 1517815749, 1376686522, 785657443, 1565883085, 19479807, 1337338803, 659279067, 230115715, 1353489064, 1625592661, 126919908, 1637975095, 1523552017, 1516341286, 970513928, 1720833236, 1260466714, 624296811, 818664250, 1627364691</SeedArray>
-            </_random>
+            <_lastTime dataType="Float">0</_lastTime>
             <_time dataType="Float">0</_time>
             <_value dataType="Float">0</_value>
             <_x003C_MaxDuration_x003E_k__BackingField dataType="Float">3</_x003C_MaxDuration_x003E_k__BackingField>
           </_x003C_Noise_x003E_k__BackingField>
+          <_x003C_SteerBias_x003E_k__BackingField dataType="Enum" type="Soulstone.Duality.Plugins.Atlas.Testing.Boids.TurnDirection" name="Left" value="1" />
+          <_x003C_StuckTime_x003E_k__BackingField dataType="Float">0</_x003C_StuckTime_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">3674566994</gameobj>
         </item>

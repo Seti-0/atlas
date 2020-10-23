@@ -25,6 +25,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
 
         ComponentActivationCollection,
         ComponentDeactivationCollection,
+        ComponentDataCollection,
 
         SyncRequest,
         FullSync
@@ -215,7 +216,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Sync
 
         public static bool TryReadDataMessage(SyncDataCollection message, out Type[] types)
         {
-            if (TryReadDataMessage(message, out types))
+            if (TryReadComponentMessage(message, out types))
             {
                 return message.Data != null && message.Data.Length == message.Paths.Length;
             }

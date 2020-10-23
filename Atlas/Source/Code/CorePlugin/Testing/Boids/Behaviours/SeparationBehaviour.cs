@@ -25,18 +25,18 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
                 float visionRadius = Separation.VisionRadius;
                 float visionAngle = Separation.VisionAngle;
 
-                var neighbours = Agent.GetNeighbours(visionRadius, visionAngle);
+                var neighbours = GetAgentNeighbours(visionRadius, visionAngle);
 
                 foreach (var neighbour in neighbours)
                 {
-                    var delta = neighbour.GameObj.Transform.Pos.Xy - Agent.GameObj.Transform.Pos.Xy;
+                    var delta = neighbour.GetPosition() - Agent.GetPosition();
                     float targetAngle = delta.Angle + MathF.Pi;
 
                     ApplyTargetAngle(targetAngle, Separation.Strength);
                 }
 
                 if (visualDebug && Separation.ShowVision)
-                    Agent.DrawVision(visionRadius, visionAngle, false, new ColorRgba(254, 63, 86));
+                    DrawAgentVision(visionRadius, visionAngle, false, new ColorRgba(254, 63, 86));
             }
         }
     }

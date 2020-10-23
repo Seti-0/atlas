@@ -5,51 +5,81 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Duality;
-using Duality.Components;
 using Duality.Components.Renderers;
 using Duality.Drawing;
 using Duality.Editor;
 
-namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
+using Soulstone.Duality.Plugins.Atlas.Components;
+
+namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids.Network
 {
-    public enum TurnDirection
-    {
-        Right, Left
-    }
-
-    [RequiredComponent(typeof(SpriteRenderer))]
-    [RequiredComponent(typeof(Transform))]
     [EditorHintCategory(CategoryNames.Testing)]
-    public class Agent : Component, IAgent
+    public class HostAgent : HostComponent<AgentState>, IAgent
     {
-        public float StuckTime { get; set; }
+        private AgentState _state = new AgentState();
 
-        public TurnDirection SteerBias { get; set; } = TurnDirection.Left;
+        public float StuckTime
+        {
+            get => _state.StuckTime;
+            set => _state.StuckTime = value;
+        }
 
-        public SteeringNoise Noise { get; set; } = new SteeringNoise();
+        public TurnDirection SteerBias
+        {
+            get => _state.SteerBias;
+            set => _state.SteerBias = value;
+        }
 
-        public bool LocalVisualDebug { get; set; } = false;
+        public SteeringNoise Noise
+        {
+            get => _state.Noise;
+            set => _state.Noise = value;
+        }
 
-        public ColorHsva NaturalColor { get; set; } = ColorHsva.Red;
+        public bool LocalVisualDebug
+        {
+            get => _state.LocalVisualDebug;
+            set => _state.LocalVisualDebug = value;
+        }
+
+        public ColorHsva NaturalColor
+        {
+            get => _state.NaturalColor;
+            set => _state.NaturalColor = value;
+        }
+
+        public override Type GetClientComponentType()
+        {
+            return typeof(ClientAgent);
+        }
+
+        protected override AgentState GetValue()
+        {
+            return _state;
+        }
 
         public Vector2 GetPosition()
         {
-            return GameObj.Transform.Pos.Xy;
+            return _state.Position;
         }
 
         public void ApplyPosition(Vector2 newPos)
         {
+            _state.Position = newPos;
+
             if (GameObj?.Transform != null)
                 GameObj.Transform.Pos = new Vector3(newPos);
         }
 
         public float GetAngle()
         {
-            return GameObj.Transform.Angle;
+            return _state.Angle;
         }
 
         public void ApplyAngle(float angle)
         {
+            _state.Angle = angle;
+
             if (GameObj?.Transform != null)
                 GameObj.Transform.Angle = angle;
         }
@@ -61,12 +91,16 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
         public void ApplyScale(float scale)
         {
+            _state.Scale = scale;
+
             if (GameObj?.Transform != null)
                 GameObj.Transform.Scale = scale;
         }
 
         public void ApplyColor(ColorHsva color)
         {
+            _state.Color = color;
+
             var renderer = GameObj.GetComponent<SpriteRenderer>();
             if (renderer != null)
                 renderer.ColorTint = color.ToRgba();
@@ -74,11 +108,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
         public ColorHsva GetColor()
         {
-            var renderer = GameObj.GetComponent<SpriteRenderer>();
-            if (renderer != null)
-                return renderer.ColorTint.ToHsva();
-
-            return NaturalColor;
+            return  _state.Color;
         }
 
         public Vector2 GetLocalPoint(Vector2 worldPoint)

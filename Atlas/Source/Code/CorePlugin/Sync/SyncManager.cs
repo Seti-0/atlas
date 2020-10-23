@@ -138,6 +138,18 @@ namespace Soulstone.Duality.Plugins.Atlas
             SendMessageFromHost(message, target);
         }
 
+        public static void PushData(IEnumerable<ICmpHostComponent> components,
+            PeerInfo target = null)
+        {
+            foreach (var component in components)
+                CheckInput(component);
+
+            var message = SyncMessageHelper.GetDataMessage(components);
+            message.MessageType = MessageType.ComponentDataCollection;
+
+            SendMessageFromHost(message, target);
+        }
+
         public static void PushAll(PeerInfo target = null)
         {
             var items = Scene.Current.FindComponents<ICmpHostComponent>();
@@ -282,6 +294,19 @@ namespace Soulstone.Duality.Plugins.Atlas
                     if (SyncMessageHelper.TryReadComponentMessage(content, out Type type))
                     {
                         SceneHelper.Update(content.Path, type, content.Data);
+                    }
+                }
+            }
+
+            else if (message.MessageType == MessageType.ComponentDataCollection)
+            {
+                var content = message as SyncDataCollection;
+
+                if (CheckConversion(content, message))
+                {
+                    if (SyncMessageHelper.TryReadDataMessage(content, out Type[] types))
+                    {
+                        SceneHelper.Update(content.Paths, types, content.Data);
                     }
                 }
             }

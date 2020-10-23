@@ -8,6 +8,7 @@ using Duality;
 using Duality.Components;
 using Duality.Editor;
 using Duality.Resources;
+using Soulstone.Duality.Plugins.Atlas.Interface;
 using Soulstone.Duality.Plugins.Atlas.Testing.Boids.Behaviours;
 using Soulstone.Duality.Plugins.BlueInput;
 
@@ -58,7 +59,8 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
             new BasicBehaviour()
         };
 
-        [DontSerialize] private List<Agent> _agents = new List<Agent>();
+        [DontSerialize] private List<IAgent> _agents = new List<IAgent>();
+        [DontSerialize] private List<ICmpHostComponent> _hostAgents = new List<ICmpHostComponent>();
 
         public void OnUpdate()
         {
@@ -68,10 +70,15 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
             foreach (var behaviour in _behaviours)
                 foreach (var agent in _agents)
                     behaviour.Apply(agent, Time.DeltaTime);
+
+            SyncManager.PushData(_hostAgents);
         }
 
         public void OnActivate() 
         {
+            foreach (var behaviour in _behaviours)
+                behaviour.Population = _agents;
+
             Clear();
             Fill();
         }
@@ -96,13 +103,13 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
             var origin = camera.GetWorldPos(args.Origin);
             var target = camera.GetWorldPos(args.Pos);
 
-            AddBoid(origin.Xy, target.Xy);
+            AddBoid(origin.Xy, target.Xy, push: true);
         }
 
         public void OnDragContinue(MouseDragEventArgs args) { }
         public void OnDragStart(MouseDragEventArgs args) { }
 
-        private void AddBoid(Vector2 origin, Vector2 target)
+        private void AddBoid(Vector2 origin, Vector2 target, bool push = false)
         {
             if (AgentPrefab.Res == null) return;
 
@@ -112,25 +119,29 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
             obj.Parent = GameObj;
 
-            var agent = obj.GetComponent<Agent>();
+            var agent = obj.GetComponent<IAgent>();
             if (agent != null)
             {
                 _agents.Add(agent);
 
                 foreach (var behaviour in _behaviours)
                     behaviour.Init(agent);
+
+                agent.ApplyPosition(origin);
+
+                var localTarget = agent.GetLocalPoint(target);
+                agent.ApplyAngle(localTarget.Angle);
+
+                agent.ApplyScale(0.2f);
+
+                if (agent is ICmpHostComponent hostCmp)
+                {
+                    _hostAgents.Add(hostCmp);
+
+                    if (push)
+                        SyncManager.PushComponentActivation(hostCmp);
+                }
             }
-
-            var transform = obj.Transform;
-            if (transform == null) return;
-
-            transform.Pos = new Vector3(origin);
-
-            var localTarget = transform.GetLocalPoint(new Vector3(target));
-
-            transform.LocalAngle = localTarget.Xy.Angle;
-
-            transform.LocalScale = 1;
         }
 
         public void Fill()
@@ -157,6 +168,8 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
 
                     AddBoid(origin, origin + vector);
                 }
+
+                SyncManager.PushComponentActivation(_hostAgents);
             }
         }
     }

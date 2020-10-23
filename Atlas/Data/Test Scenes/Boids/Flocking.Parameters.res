@@ -17,7 +17,7 @@
     <_x003C_Apply_x003E_k__BackingField dataType="Bool">true</_x003C_Apply_x003E_k__BackingField>
     <_x003C_ShowVision_x003E_k__BackingField dataType="Bool">false</_x003C_ShowVision_x003E_k__BackingField>
     <_x003C_Strength_x003E_k__BackingField dataType="Float">1</_x003C_Strength_x003E_k__BackingField>
-    <_x003C_VisionAngle_x003E_k__BackingField dataType="Float">1.57079637</_x003C_VisionAngle_x003E_k__BackingField>
+    <_x003C_VisionAngle_x003E_k__BackingField dataType="Float">1.49269056</_x003C_VisionAngle_x003E_k__BackingField>
     <_x003C_VisionRadius_x003E_k__BackingField dataType="Float">400</_x003C_VisionRadius_x003E_k__BackingField>
   </_x003C_Cohesion_x003E_k__BackingField>
   <_x003C_Color_x003E_k__BackingField dataType="Struct" type="Soulstone.Duality.Plugins.Atlas.Testing.Boids.ColorParameters" id="2716248726">
@@ -45,7 +45,7 @@
       <_x003C_Strength_x003E_k__BackingField dataType="Float">1</_x003C_Strength_x003E_k__BackingField>
     </_x003C_Mouse_x003E_k__BackingField>
     <_x003C_Noise_x003E_k__BackingField dataType="Struct" type="Soulstone.Duality.Plugins.Atlas.Testing.Boids.NoiseParameters" id="2043499194">
-      <_x003C_Apply_x003E_k__BackingField dataType="Bool">true</_x003C_Apply_x003E_k__BackingField>
+      <_x003C_Apply_x003E_k__BackingField dataType="Bool">false</_x003C_Apply_x003E_k__BackingField>
       <_x003C_Duration_x003E_k__BackingField dataType="Float">1</_x003C_Duration_x003E_k__BackingField>
       <_x003C_Strength_x003E_k__BackingField dataType="Float">1</_x003C_Strength_x003E_k__BackingField>
     </_x003C_Noise_x003E_k__BackingField>
@@ -55,7 +55,7 @@
       <X dataType="Float">-428.5</X>
       <Y dataType="Float">-351.5</Y>
     </_x003C_Region_x003E_k__BackingField>
-    <_x003C_Speed_x003E_k__BackingField dataType="Float">400</_x003C_Speed_x003E_k__BackingField>
+    <_x003C_Speed_x003E_k__BackingField dataType="Float">80</_x003C_Speed_x003E_k__BackingField>
     <_x003C_SteeringStrength_x003E_k__BackingField dataType="Float">1</_x003C_SteeringStrength_x003E_k__BackingField>
     <_x003C_VisualDebug_x003E_k__BackingField dataType="Bool">true</_x003C_VisualDebug_x003E_k__BackingField>
   </_x003C_General_x003E_k__BackingField>

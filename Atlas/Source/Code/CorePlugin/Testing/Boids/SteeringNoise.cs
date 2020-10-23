@@ -12,7 +12,7 @@ namespace Soulstone.Duality.Plugins.Atlas.Testing.Boids
         private static Random random = new Random();
 
         private float _lastTime;
-        private float _duration;
+        private float _duration = 3;
         private float _value;
         private float _time;
 
